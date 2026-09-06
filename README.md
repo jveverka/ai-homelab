@@ -1,1 +1,1 @@
-# ai-homelab
+# AI Homelab
