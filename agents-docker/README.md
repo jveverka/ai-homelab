@@ -1,23 +1,23 @@
 
 ## Build Docker
 ``
-docker build -t ubuntu-java25-maven-qwencode -f Dockerfile-j25 .
+docker build -t ubuntu-java25-maven-agents -f Dockerfile-j25 .
 ``
 
 ## Run in interactive mode
 ``
-docker run -it --name ubuntu-java25-maven-qwencode --rm \
+docker run -it --name ubuntu-java25-maven-agents --rm \
   --privileged \
   -v /home/juraj/Data/Private/ai-home-lab:/data \
-  ubuntu-java25-maven-qwencode
+  ubuntu-java25-maven-agents
 ``
 
 ## Run in daemon mode
 ``
-docker run --name ubuntu-java25-maven-qwencode -d \
+docker run --name ubuntu-java25-maven-agents -d \
   --privileged \
   -v /home/juraj/Data/Private/ai-home-lab:/data \
-  ubuntu-java25-maven-qwencode
+  ubuntu-java25-maven-agents
 ``
 
 ## Run QwenCode
