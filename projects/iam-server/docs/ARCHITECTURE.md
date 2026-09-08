@@ -71,9 +71,9 @@ Prefer Java records.
 Example:
 
 ```java
-public record CreateOrganizationRequest(
-        String name,
-        String externalId
+public record CreatePermissionRequest(
+        String id,
+        String description
 ) {}
 ```
 
@@ -112,6 +112,16 @@ Do not introduce a new dependency when equivalent functionality already exists i
 - Spring Boot
 
 Every additional dependency should have a concrete purpose.
+
+## Deployment
+Resulting microservice will be deployed as docker container. Dockerfile is required.
+All configuration parameters must be set as environment variables.
+Docker compose file is created for local testing.
+
+## Monitoring and Documentation 
+- Spring Boot actuator
+- OpenAPI, Swagger UI
+- Git commit version available via Spring Boot actuator
 
 ## Future compatibility
 

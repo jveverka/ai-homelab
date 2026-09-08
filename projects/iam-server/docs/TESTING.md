@@ -91,31 +91,31 @@ Do not mock the repository in acceptance-level REST tests.
 
 At minimum test:
 
-### Organizations
+### Users
 
-- create organization
-- retrieve organization
-- retrieve nonexistent organization
-- reject blank name
-- reject blank external ID
-- reject duplicate external ID
-- list organizations
+- create users
+- retrieve users
+- retrieve nonexistent users
+- reject blank email, password
+- list users
 - pagination
 - sorting
-- delete empty organization
-- reject deletion of organization containing devices
+- reject deletion of last admin user
+- activate user
+- deactivate user
 
-### Devices
+### Permissions
 
-- create device
-- retrieve device
-- reject creation for nonexistent organization
-- reject duplicate serial number
-- reject invalid serial number
-- list organization devices
+- create permission
+- retrieve permissions
+- remove permission
 - pagination
-- delete device
-- retrieve deleted device returns 404
+- minimal permission set cannot be removed
+
+### Tokens
+- issue token (login)
+- validate token (introspect)
+- invalidate token (logout)
 
 ## Error responses
 
