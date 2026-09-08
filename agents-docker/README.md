@@ -23,7 +23,7 @@ docker run --name ubuntu-java25-maven-agents -d \
 ## Run QwenCode
 ``
 qwen --auth-type openai --model qwen3.8:27b-1M \
-     --approval-mode auto \
+     --approval-mode yolo \
      --openai-api-key ollama \
      --openai-base-url http://192.168.44.102:11434/v1
 ``
