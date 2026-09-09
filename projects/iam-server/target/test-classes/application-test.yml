@@ -1,0 +1,11 @@
+# Test configuration
+spring:
+  datasource:
+    url: ${TEST_DATABASE_URL:jdbc:postgresql://localhost:5432/test_iam}
+    username: ${TEST_DATABASE_USER:test}
+    password: ${TEST_DATABASE_PASSWORD:test}
+
+iam:
+  admin:
+    email: admin@example.com
+    password: TestAdmin123!

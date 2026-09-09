@@ -1,0 +1,28 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: iam
+      POSTGRES_USER: iam
+      POSTGRES_PASSWORD: iam
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U iam"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      DATABASE_URL: jdbc:postgresql://postgres:5432/iam
+      DATABASE_USER: iam
+      DATABASE_PASSWORD: iam
+      DEFAULT_ADMIN_EMAIL: admin@example.com
+      DEFAULT_ADMIN_PWD: changeme123
+    depends_on:
+      postgres:
+        condition: service_healthy

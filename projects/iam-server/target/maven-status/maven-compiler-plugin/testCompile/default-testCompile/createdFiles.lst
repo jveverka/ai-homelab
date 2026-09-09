@@ -1,0 +1,6 @@
+com/example/iamservice/it/BaseIntegrationTest.class
+com/example/iamservice/it/UserApiIT.class
+com/example/iamservice/it/ErrorResponseIT.class
+com/example/iamservice/it/TokenApiIT.class
+com/example/iamservice/it/BaseApiIT.class
+com/example/iamservice/it/PermissionApiIT.class

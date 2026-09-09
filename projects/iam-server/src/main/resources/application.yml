@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: iam-server
+
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/iam}
+    username: ${DATABASE_USER:iam}
+    password: ${DATABASE_PASSWORD:iam}
+    driver-class-name: org.postgresql.Driver
+
+  jooq:
+    sql-dialect: POSTGRES
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+server:
+  port: ${SERVER_PORT:8080}
+
+iam:
+  admin:
+    email: ${DEFAULT_ADMIN_EMAIL:admin@example.com}
+    password: ${DEFAULT_ADMIN_PWD:changeme123}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,env
+  info:
+    git:
+      mode: full
+
+info:
+  app:
+    name: iam-server
+    description: Identity Access Management Service
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+logging:
+  level:
+    com.example.iamservice: ${LOG_LEVEL:INFO}

@@ -1,0 +1,6 @@
+/data/iam-server/src/test/java/com/example/iamservice/it/BaseApiIT.java
+/data/iam-server/src/test/java/com/example/iamservice/it/BaseIntegrationTest.java
+/data/iam-server/src/test/java/com/example/iamservice/it/ErrorResponseIT.java
+/data/iam-server/src/test/java/com/example/iamservice/it/PermissionApiIT.java
+/data/iam-server/src/test/java/com/example/iamservice/it/TokenApiIT.java
+/data/iam-server/src/test/java/com/example/iamservice/it/UserApiIT.java
