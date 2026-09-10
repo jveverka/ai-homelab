@@ -118,6 +118,12 @@ Resulting microservice will be deployed as docker container. Dockerfile is requi
 All configuration parameters must be set as environment variables.
 Docker compose file is created for local testing.
 
+Required environment variables include:
+
+- `DB_URL`, `DB_USERNAME`, `DB_PASSWORD` — PostgreSQL connection
+- `DEFAULT_ADMIN_EMAIL`, `DEFAULT_ADMIN_PWD` — seed admin user (AC-02)
+- `DEFAULT_TOKEN_DURATION_SECONDS` — default token lifetime when a login request omits `duration`
+
 ## Monitoring and Documentation 
 - Spring Boot actuator
 - OpenAPI, Swagger UI
@@ -134,6 +140,10 @@ Do not prematurely implement:
 - CQRS
 - Redis
 - Kubernetes configuration
-- authentication
+- third-party authentication / authorization frameworks (OAuth2 / OIDC)
 
 unless explicitly required by another specification.
+
+The opaque-token login / introspect / logout flow and the per-endpoint
+permission checks defined in `REST_API.md` are in scope; they are not
+considered "authentication frameworks" for the list above.

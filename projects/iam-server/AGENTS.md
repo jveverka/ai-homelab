@@ -19,10 +19,11 @@ Use:
 
 - Java 25
 - Spring Boot 4.x
-- Maven
+- Spring Security
+- Maven (do not use Maven Wrapper: `mvnw`)
 - PostgreSQL
 - Flyway
-- Spring Data JDBC / jOOQ 
+- jOOQ
 - JUnit 5
 - Testcontainers
 - AssertJ
@@ -55,7 +56,7 @@ Use:
 
 The task is complete only when:
 
-``mvn clean verify``
+`mvn clean verify`
 
 passes successfully.
 

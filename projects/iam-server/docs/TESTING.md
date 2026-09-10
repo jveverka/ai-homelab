@@ -94,28 +94,36 @@ At minimum test:
 ### Users
 
 - create users
-- retrieve users
-- retrieve nonexistent users
+- retrieve users (list and by id)
+- retrieve nonexistent user by id (404)
 - reject blank email, password
+- reject duplicate email
 - list users
 - pagination
 - sorting
 - reject deletion of last admin user
+- reject deactivation of last admin user
 - activate user
 - deactivate user
+- deactivating / deleting a user invalidates that user's tokens
 
 ### Permissions
 
 - create permission
 - retrieve permissions
 - remove permission
+- assign / unassign permission to a user
 - pagination
 - minimal permission set cannot be removed
+- removing or unassigning a permission invalidates tokens whose scope contains it
 
 ### Tokens
 - issue token (login)
-- validate token (introspect)
+- issue token with an explicit scope
+- reject a requested scope wider than the user's permissions
+- validate token (introspect) returns uuid, email, expiresAt, permissions
 - invalidate token (logout)
+- reject expired token
 
 ## Error responses
 
@@ -175,7 +183,7 @@ for integration tests.
 The project is considered test-complete only when:
 
 ```bash
-./mvnw clean verify
+mvn clean verify
 ```
 
 returns exit code 0.

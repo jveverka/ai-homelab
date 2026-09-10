@@ -12,7 +12,7 @@ Maven, or the included Maven Wrapper
 Docker is required for integration tests using Testcontainers.
 
 ## Build
-Run: ``mvn clean install``
+Run: ``mvn clean verify``
 
 This is the canonical command for verifying the complete project.
 
