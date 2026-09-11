@@ -18,7 +18,7 @@ All acceptance criteria must be satisfied.
 Use:
 
 - Java 25
-- Spring Boot 4.x
+- Spring Boot 4.x.x (do not use Spring Boot 3.x.x)
 - Spring Security
 - Maven (do not use Maven Wrapper: `mvnw`)
 - PostgreSQL

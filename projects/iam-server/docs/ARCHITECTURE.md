@@ -109,7 +109,7 @@ Do not introduce a new dependency when equivalent functionality already exists i
 
 - Java standard library
 - Spring Framework
-- Spring Boot
+- Spring Boot 4.x.x
 
 Every additional dependency should have a concrete purpose.
 
