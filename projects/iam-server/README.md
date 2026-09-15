@@ -34,7 +34,6 @@ REST_API.md — HTTP interface
 ARCHITECTURE.md — implementation constraints
 TESTING.md — testing strategy
 ACCEPTANCE_CRITERIA.md — definition of correct behavior
-Agent development
 
 Coding agents must read:
 AGENTS.md
