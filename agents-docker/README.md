@@ -1,8 +1,8 @@
 # Agents Docker
 This docker image contains basic tools for AI agents and has installed AI agents inside:
-* Qwen Code CLI
-* Claude Code CLI
-* Open Code CLI
+* [Qwen Code CLI](https://qwen.ai/qwencode)
+* [Claude Code CLI](https://claude.com/product/claude-code)
+* [Open Code CLI](https://opencode.ai/)
 
 ## Build Docker
 ```bash
