@@ -15,7 +15,7 @@ ollama pull muse-glimmer:30b
 
 ### Modify Models
 ```
-ollama build qwen3.8:27b_1M -f Modelfile-qwen3.8_1M .
+ollama create qwen3.8:27b_1M -f Modelfile-qwen3.8_1M
 ```
 
 ### Show Models
