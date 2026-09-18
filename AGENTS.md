@@ -38,14 +38,4 @@ This is Project AI Home Lab focused on use of local LLMs and PC hardware in loca
 - generated code is stored in git repositories in `repos` directory 
 - `main` branch is always stable and functional 
 - no git submodules
- 
-## Questions
-* Which local LLMs to use for agentic coding ? 
-* Which local LLMs to use for code review ? 
-* Which local LLMs to use for testing and deployment ? 
-* What agent or agent(s) are best for this task ? 
-* How to spread the load between AI-Server1, AI-Server2, Work-PC ? 
-* What GPU would be the best fit for AI-Server2 ?
-* Is my targets feasible with this hardware ? 
-* Is there any problem with general idea of agentic coding with local LLMs on local hardware ? 
-* Sould I consider other opensource projects than https://ollama.com/, https://huggingface.co/ ? 
+

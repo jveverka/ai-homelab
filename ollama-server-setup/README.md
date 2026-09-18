@@ -22,3 +22,7 @@ ollama create qwen3.8:27b_1M -f Modelfile-qwen3.8_1M
 ```
 ollama ls 
 ```
+
+### Models
+* [qwen3.8](https://ollama.com/library/qwen3.8)
+* [qwen3.8-flash-next](https://ollama.com/library/qwen3.8-flash-next)
