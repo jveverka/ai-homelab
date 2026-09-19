@@ -3,7 +3,6 @@
 ## Overview
 
 The application is a conventional Spring Boot service.
-
 Use a simple layered architecture within feature packages.
 
 Conceptually:

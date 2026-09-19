@@ -2,13 +2,10 @@
 Simple Identity Access Management Service
 
 ## Requirements
+Requirements are described in separate [document](docs/REQUIREMENTS.md).
 
 ### Development requires:
-
-Java 25
-Docker
-Maven, or the included Maven Wrapper
-
+Java 25, Docker, Maven
 Docker is required for integration tests using Testcontainers.
 
 ## Build
@@ -17,10 +14,7 @@ Run: ``mvn clean verify``
 This is the canonical command for verifying the complete project.
 
 ## REST API
-
-The REST API is documented in:
-
-docs/REST_API.md
+The REST API is documented in separate [document](docs/REST_API.md)
 
 ## Specifications
 Project requirements are maintained under:

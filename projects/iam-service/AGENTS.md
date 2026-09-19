@@ -61,5 +61,4 @@ The task is complete only when:
 passes successfully.
 
 Also verify each item in docs/ACCEPTANCE_CRITERIA.md.
-
 Do not stop merely because the project compiles.

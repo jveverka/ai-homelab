@@ -1,4 +1,4 @@
-# Photo Database
+# Photos Database Backend
 
 This is a simple database of photos. Photos are stored in folder which is accessible as file system.
 This microservice will scan periodically given read-only folder with pictures, read EXIFF data for each picture such as:
