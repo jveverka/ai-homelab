@@ -5,6 +5,12 @@ This is a simple Photo database. This microservice reads input directory with ph
 
 ## 2. Functional requirements
 
+### NR-001 Security
+
+### NR-002 Database
+Mongo database is used to store photo data.
+
+## 3. Functional requirements
 
 ### FR-001 Supported photo formats
 Following photo formats are supported: JPEG, GIF, PNG

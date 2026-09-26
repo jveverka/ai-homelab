@@ -7,7 +7,7 @@ This docker image contains basic tools for AI agents and has installed AI agents
 
 ## Build Docker
 ```bash
-docker build -t ubuntu-java25-maven-agents -f Dockerfile-j25 .
+docker build -t ubuntu-agents -f Dockerfile-j25 .
 ```
 
 ## tmux cheat sheet
@@ -19,7 +19,7 @@ tmux a             # <- reattach to running session
 
 ## Run in interactive mode
 ```bash
-docker run -it --name ubuntu-java25-maven-agents --rm \
+docker run -it --name ubuntu-agents --rm \
   --privileged \
   -v /home/juraj/Data/Projects/private-dc/ai-homelab:/data \
   ubuntu-java25-maven-agents
@@ -27,10 +27,14 @@ docker run -it --name ubuntu-java25-maven-agents --rm \
 
 ## Run in daemon mode
 ```bash
-docker run --name ubuntu-java25-maven-agents -d \
+docker run --name ubuntu-agents -d \
   --privileged \
   -v /home/juraj/Data/Projects/private-dc/ai-homelab:/data \
   ubuntu-java25-maven-agents
+```
+Connect inside `ubuntu-agents` container.
+```bash
+docker exec -it ubuntu-agents bash  
 ```
 
 ## Run Agents in Docker
