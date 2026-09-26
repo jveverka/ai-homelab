@@ -22,7 +22,7 @@ tmux a             # <- reattach to running session
 docker run -it --name ubuntu-agents --rm \
   --privileged \
   -v /home/juraj/Data/Projects/private-dc/ai-homelab:/data \
-  ubuntu-java25-maven-agents
+  ubuntu-agents
 ```
 
 ## Run in daemon mode
@@ -30,7 +30,7 @@ docker run -it --name ubuntu-agents --rm \
 docker run --name ubuntu-agents -d \
   --privileged \
   -v /home/juraj/Data/Projects/private-dc/ai-homelab:/data \
-  ubuntu-java25-maven-agents
+  ubuntu-agents
 ```
 Connect inside `ubuntu-agents` container.
 ```bash
