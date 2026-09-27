@@ -39,7 +39,7 @@ docker exec -it ubuntu-agents bash
 
 ## Run Agents in Docker
 
-### Run QwenCode
+### Run QwenCode in terminal
 ```bash
 qwen --auth-type openai --model qwen3.8:27b-1M \
      --approval-mode yolo \
@@ -47,10 +47,15 @@ qwen --auth-type openai --model qwen3.8:27b-1M \
      --openai-base-url http://192.168.44.102:11434/v1
 ```
 
-### Run OpenCode
+### Run QwenCode as web page
 ```bash
-OPENCODE_CONFIG_CONTENT='{"provider":{"ollama":{"npm":"@ai-sdk/openai-compatible","name":"Ollama","options":{"baseURL":"http://192.168.44.102:11434/v1"},"models":{"qwen3.8:27b":{"tools":true,"limit":{"context":131072,"output":16384}}}}},"model":"ollama/qwen3.8:27b-1M"}'
-opencode
+export OPENAI_API_KEY=ollama
+export OPENAI_BASE_URL=http://192.168.44.102:11434/v1
+export OPENAI_MODEL='qwen3.8-flash-next:125b-a6b-q4_K_M_1M'
+
+qwen serve \
+    --hostname 0.0.0.0 \
+    --port 4170
 ```
 
 ### Run ClaudeCode
@@ -61,4 +66,19 @@ OLLAMA_CONTEXT_LENGTH=64000
 
 claude --model qwen3.6-1M
 claude --model qwen3.8:27b-1M
+```
+
+### Run OpenCode in Terminal
+```bash
+OPENCODE_CONFIG_CONTENT='{"provider":{"ollama":{"npm":"@ai-sdk/openai-compatible","name":"Ollama","options":{"baseURL":"http://192.168.44.102:11434/v1"},"models":{"qwen3.8:27b":{"tools":true,"limit":{"context":131072,"output":16384}}}}},"model":"ollama/qwen3.8:27b-1M"}'
+opencode
+```
+
+### Run OpenCode as web page
+```bash
+export OPENCODE_SERVER_PASSWORD='IamFuckingLegend2026'
+export OPENCODE_CONFIG_CONTENT='{"provider":{"ollama":{"npm":"@ai-sdk/openai-compatible","name":"Ollama","options":{"baseURL":"http://192.168.44.102:11434/v1"},"models":{"qwen3.8-flash-next:125b-a6b-q4_K_M_1M":{"tools":true,"limit":{"context":131072,"output":16384}}}}},"model":"ollama/qwen3.8-flash-next:125b-a6b-q4_K_M_1M"}'
+opencode web \
+    --hostname 0.0.0.0 \
+    --port 4096
 ```
