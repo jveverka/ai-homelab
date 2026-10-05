@@ -82,3 +82,8 @@ opencode web \
     --hostname 0.0.0.0 \
     --port 4096
 ```
+
+### Run Codex in Terminal
+```bash
+codex
+```
