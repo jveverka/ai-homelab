@@ -2,8 +2,8 @@
 set -e
 
 export OPENAI_API_KEY="ollama"
-export OPENAI_BASE_URL="http://192.168.44.102:11434/v1"
-export OPENAI_MODEL="qwen3.8-flash-next:125b-a6b-q4_K_M_1M"
+export OPENAI_BASE_URL=${OPENAI_BASE_URL_EXT}
+export OPENAI_MODEL=${OPENAI_MODEL_EXT}
 echo "starting qwen serve ..."
 
 qwen serve \
