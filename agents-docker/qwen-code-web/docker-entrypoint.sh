@@ -9,4 +9,7 @@ qwen serve \
    --require-auth \
    --hostname 0.0.0.0 \
    --port 4170 \
+   --model ${OPENAI_MODEL} \
+   --openai-api-key ollama \
+   --openai-base-url ${OPENAI_BASE_URL} \
    --allow-origin ${QWEN_ALLOWED_ORIGIN}
