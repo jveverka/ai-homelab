@@ -7,7 +7,7 @@ This docker image contains basic tools for AI agents and has installed AI agents
 
 ## Build Docker
 ```bash
-docker build -t ubuntu-agents -f Dockerfile-j25 .
+docker build -t ubuntu-agents -f Dockerfile .
 ```
 
 ## tmux cheat sheet

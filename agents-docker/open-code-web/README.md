@@ -10,5 +10,5 @@ docker run -d --name qwen-code-web \
   --privileged \
   -v /home/juraj/Data:/data \
   -v ./opencode.json:/root/.config/opencode/opencode.json:ro \
-  qwen-code-web
+  open-code-web
 ```
