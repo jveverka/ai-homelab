@@ -14,7 +14,6 @@ sudo vi /etc/systemd/system/ollama.service.d/override.conf
 
 # insert lines
 [Service]
-Environment="OLLAMA_API_KEY=my-random-secret"
 Environment="OLLAMA_HOST=0.0.0.0:11434"
 Environment="OLLAMA_KEEP_ALIVE=-1"
 ```
