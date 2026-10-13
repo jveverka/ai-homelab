@@ -223,6 +223,7 @@ Response 202:
 * Data access layer - Spring Data, JDBC templates
 * REST APIs - Spring REST, Security: Bearer opaque tokens. 
 * Backend project is located in separate subfolder `chat-backend`
+* Testing - Junit + Testcontainers, avoid mocking as much as possible. 
 
 ## 4. Single page UI
 * React + TypeScript + Vite + Mantine
