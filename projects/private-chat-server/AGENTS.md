@@ -59,7 +59,7 @@ POST   /v1/tokens/login
 Authorization: none
 Request Body: { "login": "user1", "password": "*******" }
 Response 200: { "accessToken": "token", "role": "ADMIN", "expiresAt": "timestamp", "status" : "ok" }
-Response 401: { "status" : "failed" } 
+Response 400: { "status" : "failed" } 
 ```
 
 ### Check token
@@ -85,7 +85,7 @@ Only ADMIN role, create new user
 POST   /v1/users
 Authorization: 'Bearer <token>'
 Request Body: { "login": "user1", "firstName": "john", "lastName": "doe", "timezone": "UTC", "role": "USER", "password": "*******" }
-Response 200: { "id": "uuid" }
+Response 201: { "id": "uuid" }
 ```
 
 ### Get self user data
@@ -150,7 +150,8 @@ Response 200: [
 ```
 
 ### Create new user contact
-Create contact for user-id. contactId is userId of other user in the system. 
+Add a user to the contact list of the authenticated user (the user the token belongs to).
+contactId is userId of other user in the system which is added to the contact list of authenticated user. 
 ```
 POST   /v1/contacts/create
 Authorization: 'Bearer <token>'
@@ -159,7 +160,8 @@ Response 202:
 ```
 
 ### Remove user contact
-Remove contact for user-id. contactId is userId of other user in the system.
+Remove a user from the contact list of the authenticated user.
+contactId is userId of other user in the system from contact list of authenticated user.
 ```
 POST   /v1/contacts/remove
 Authorization: 'Bearer <token>'
@@ -204,14 +206,19 @@ Response 202:
 ```
 
 ### Get all messages for a chat
-Get all messages for a chat. Only owners or members of the chat are allowed to see the messages. Pagination is required.
-Messages are sorted by timestamp starting from latest message.
+Get messages for a chat, newest first. Only owners or members of the chat are allowed to see the messages.
+Paginated with a cursor; default page size 50, maximum 200.
 ```
-GET   /v1/chats/{chat-id}/messages
+GET   /v1/chats/{chat-id}/messages?limit=50&cursor=<opaque>
 Authorization: 'Bearer <token>'
-Response 200: [
-  { "id": "uuid", "timestamp": "timestamp", "userId": "uuid", "message": "message", "edited": false } 
-]
+Request Body: none
+Response 200: {
+  "messages": [
+    { "id": "uuid", "timestamp": "timestamp", "userId": "uuid", "message": "message", "edited": false }
+  ],
+  "nextCursor": "opaque",
+  "hasMore": true
+}
 ```
 
 ### Post new message to a chat
@@ -294,7 +301,7 @@ Generic rules for all REST endpoints until specified otherwise.
 * User may add other user in own contact list to the chat.
 * User can see own chats and chats where user is a member.
 * User may post message into a chat.
-* Messages in chat are ordered by a timestamp.
+* Messages in chat are ordered by a timestamp starting from latest message.
 * User may edit own message in the chat.
 * Message belongs to a chat.
 * All members of the chat can see all messages in that chat, including history.
