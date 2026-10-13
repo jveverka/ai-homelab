@@ -224,14 +224,15 @@ Response 202:
 * Backend project is located in separate subfolder `chat-backend`
 
 ## 4. Single page UI
-* 
+* React + TypeScript + Vite + Mantine
+* Single page layout with path routing (bookmarkable links).
 * Web UI project is located in separate subfolder `chat-webui`
  
 ## Deployment
 * docker-compose stack containing docker containers below
 * `chat-database` - postgewsql single node database server on port 5432
 * `chat-backend` - docker image, REST API on port 8080
-* `chat-webui` - docker image, Web Server on port 8081
+* `chat-webui` - docker image, Web Server exposes UI on port 8081
 
 ## 5. Features & Requirements
 
