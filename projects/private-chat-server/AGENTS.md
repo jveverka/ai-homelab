@@ -53,6 +53,7 @@ Use UUIDs for every as unique identifier for every entity.
 Get access token
 ```
 POST   /v1/tokens/login
+Authorization: none
 Request Body: { "login": "user1", "password": "*******" }
 Response 200: { "access-token": "uuidr-andom-opaque-token", "role": "ADMIN", "expiresAt": "timestamp", "status" : "ok" }
 Response 400: { "status" : "failed" } 
@@ -76,42 +77,141 @@ Response 200: { "status" : "ok" }
 ```
 
 ### Create new User
-Only ADMIN role
+Only ADMIN role, create new user
 ```
-POST   /v1/users/{user-id}
+POST   /v1/users
+Authorization: 'Bearer <token>'
+Request Body: { "login": "user1", "firstName": "john", "lastName": "doe", "timezone": "UTC", "role": "USER", "password": "*******" }
+Response 200: { "id": "uuid" }
 ```
 
 ### Update user's data
-Only ADMIN role may update other users. User may update own user data.
+Only ADMIN role may update other users. User may update own user data. Only admin may change user's role.
 ```
 PUT    /v1/users/{user-id}
+Authorization: 'Bearer <token>'
+Request Body: { "firstName": "john", "lastName": "doe", "timezone": "UTC", "role": "USER", "password": "*******" }
+Response 201: 
+```
+
+### List users
+List all users in the system. Only ADMIN role.
 ```
 GET    /v1/users
+Authorization: 'Bearer <token>'
+Response 200: [ 
+  { "id": "uuid", "login": "user1", "firstName": "john", "lastName": "doe", "timezone": "UTC", "role": "USER" }
+] 
+```
+
+### Get single user data
+Get data doe particular user by user's uuid. Any user can see other user data as long as provided uuid is valid.
+```
 GET    /v1/users/{user-id}
+{ "id": "uuid", "login": "user1", "firstName": "john", "lastName": "doe", "timezone": "UTC", "role": "USER" }
+```
+
+### Get self user data
+Get user data for user which token belongs to.
+```
 GET    /v1/users/self
+Authorization: 'Bearer <token>'
+{ "id": "uuid", "login": "user1", "firstName": "john", "lastName": "doe", "timezone": "UTC", "role": "USER" }
+```
+
+### Activate user
+Activate previously inactive user. Only ADMIN roles.
+```
 POST   /v1/users/{user-id}/activate
+Authorization: 'Bearer <token>'
+Response 200: 
+```
+
+### Deactivate user
+Deactivate previously active user. Only ADMIN roles.
+```
+Authorization: 'Bearer <token>'
 POST   /v1/users/{user-id}/deactivate
+Response 200: 
+```
 
 ### Create new user contact
 Create contact for user-id. contactId is userId of other user in the system. 
 ```
-POST   /v1/contacts/{user-id}/create
+POST   /v1/contacts/create
+Authorization: 'Bearer <token>'
 Request Body: { "contactId": "uuid" }
+Response 200: 
 ```
+
 ### Remove user contact
 Remove contact for user-id. contactId is userId of other user in the system.
 ```
-POST   /v1/contacts/{user-id}/remove
+POST   /v1/contacts/remove
+Authorization: 'Bearer <token>'
 Request Body: { "contactId": "uuid" }
+Response 200: 
 ```
 
+### Get list of chats
+List all chats owned by this user or where this user member of the chat. All roles.
+```
 GET   /v1/chats
+Authorization: 'Bearer <token>'
+Response 200: [
+   { "id": "uuid", "name": "name", "createdAt": "timestamp", "owner": "uuid" }
+]
+```
+
+### Get chat by uuid
+Get chat by uuid, user can see only chats they own or are members of. All roles.
+```
 GET   /v1/chats/{chat-id}
-POST  /v1/chats
+Authorization: 'Bearer <token>'
+Response 200: { "id": "uuid", "name": "name", "createdAt": "timestamp", "owner": "uuid" }
+```
+
+### Create chat
+Create new chat and invite users. All roles.
+```
+POST  /v1/chats/{chat-id}
+Authorization: 'Bearer <token>'
+Request Body: { "name": "chat name", "newMembers": [ "uuid1", "uuid2" ] }
+```
+
+### Update chat
+Update chat data. Only owner of the chat or ADMIN can do that.
+```
 PUT   /v1/chats/{chat-id}
+Authorization: 'Bearer <token>'
+Request Body: { "name": "new name", "newMembers": [ "uuid1", "uuid2" ], "removedMembers": [ "uuid2" ] }
+```
+
+### Get all messages for a chat
+Get all messages for a chat. Only owners or members of the chat are allowed to see the messages.
+```
 GET   /v1/chats/{chat-id}/messages
+Authorization: 'Bearer <token>'
+Response 200: [
+  { "id": "uuid", "timestamp": "timestamp", "userId": "uuid", "message": "message" } 
+]
+```
+
+### Post new message to a chat
+Post new message to a chat. Only owners or members of the chat are allowed to post new the messages.
+```
 POST  /v1/chats/{chat-id}/messages
+Authorization: 'Bearer <token>'
+Request Body: { "message": "message" }
+```
+
+### Edit message in a chat
+Edit message in a chat. Only owners or members of the chat are allowed to edit the messages in a chat.
+```
 PUT   /v1/chats/{chat-id}/messages/{message-id}
+Authorization: 'Bearer <token>'
+Request Body: { "message": "message" }
+```
 
 ## 3. Backend
 * Springboot 4 , Java 25, gradle, single monolithic runtime
@@ -134,6 +234,8 @@ PUT   /v1/chats/{chat-id}/messages/{message-id}
 ### Roles
 * ADMIN - can create users, can deactivate users, can create chat, can write messages, can edit own messages
 * USER - can create chat, can write messages, can edit own messages, can create invitation codes
+* Role is assigned to user when user is created.
+* Only ADMIN can change user roles.
 
 ### Users
 * First ADMIN user is created in the database manually.
