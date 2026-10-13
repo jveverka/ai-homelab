@@ -91,7 +91,7 @@ Only ADMIN role may update other users. User may update own user data. Only admi
 PUT    /v1/users/{user-id}
 Authorization: 'Bearer <token>'
 Request Body: { "firstName": "john", "lastName": "doe", "timezone": "UTC", "role": "USER", "password": "*******" }
-Response 201: 
+Response 202: 
 ```
 
 ### List users
@@ -108,7 +108,7 @@ Response 200: [
 Get data doe particular user by user's uuid. Any user can see other user data as long as provided uuid is valid.
 ```
 GET    /v1/users/{user-id}
-{ "id": "uuid", "login": "user1", "firstName": "john", "lastName": "doe", "timezone": "UTC", "role": "USER" }
+Response 200: { "id": "uuid", "login": "user1", "firstName": "john", "lastName": "doe", "timezone": "UTC", "role": "USER" }
 ```
 
 ### Get self user data
@@ -116,7 +116,7 @@ Get user data for user which token belongs to.
 ```
 GET    /v1/users/self
 Authorization: 'Bearer <token>'
-{ "id": "uuid", "login": "user1", "firstName": "john", "lastName": "doe", "timezone": "UTC", "role": "USER" }
+Response 200: { "id": "uuid", "login": "user1", "firstName": "john", "lastName": "doe", "timezone": "UTC", "role": "USER" }
 ```
 
 ### Activate user
@@ -124,7 +124,7 @@ Activate previously inactive user. Only ADMIN roles.
 ```
 POST   /v1/users/{user-id}/activate
 Authorization: 'Bearer <token>'
-Response 200: 
+Response 202: 
 ```
 
 ### Deactivate user
@@ -132,7 +132,7 @@ Deactivate previously active user. Only ADMIN roles.
 ```
 Authorization: 'Bearer <token>'
 POST   /v1/users/{user-id}/deactivate
-Response 200: 
+Response 202: 
 ```
 
 ### Create new user contact
@@ -141,7 +141,7 @@ Create contact for user-id. contactId is userId of other user in the system.
 POST   /v1/contacts/create
 Authorization: 'Bearer <token>'
 Request Body: { "contactId": "uuid" }
-Response 200: 
+Response 202: 
 ```
 
 ### Remove user contact
@@ -150,7 +150,7 @@ Remove contact for user-id. contactId is userId of other user in the system.
 POST   /v1/contacts/remove
 Authorization: 'Bearer <token>'
 Request Body: { "contactId": "uuid" }
-Response 200: 
+Response 202: 
 ```
 
 ### Get list of chats
@@ -177,6 +177,7 @@ Create new chat and invite users. All roles.
 POST  /v1/chats/{chat-id}
 Authorization: 'Bearer <token>'
 Request Body: { "name": "chat name", "newMembers": [ "uuid1", "uuid2" ] }
+Response 201:
 ```
 
 ### Update chat
@@ -185,6 +186,7 @@ Update chat data. Only owner of the chat or ADMIN can do that.
 PUT   /v1/chats/{chat-id}
 Authorization: 'Bearer <token>'
 Request Body: { "name": "new name", "newMembers": [ "uuid1", "uuid2" ], "removedMembers": [ "uuid2" ] }
+Response 202:
 ```
 
 ### Get all messages for a chat
@@ -203,6 +205,7 @@ Post new message to a chat. Only owners or members of the chat are allowed to po
 POST  /v1/chats/{chat-id}/messages
 Authorization: 'Bearer <token>'
 Request Body: { "message": "message" }
+Response 202:
 ```
 
 ### Edit message in a chat
@@ -211,6 +214,7 @@ Edit message in a chat. Only owners or members of the chat are allowed to edit t
 PUT   /v1/chats/{chat-id}/messages/{message-id}
 Authorization: 'Bearer <token>'
 Request Body: { "message": "message" }
+Response 202:
 ```
 
 ## 3. Backend
