@@ -18,6 +18,7 @@ RUN apt update && apt install -y \
     tmux \
     screen \
     ncurses-term \
+    npm \
     && rm -rf /var/lib/apt/lists/*
 
 # Gradle
