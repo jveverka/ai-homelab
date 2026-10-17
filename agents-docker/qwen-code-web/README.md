@@ -1,6 +1,6 @@
 
 ```bash
-docker build --network=host -t qwen-code-web -f Dockerfile .
+docker build -t qwen-code-web -f Dockerfile .
 
 docker run -d --name qwen-code-web \
   -e OPENAI_BASE_URL_EXT="http://192.168.44.102:11434/v1" \

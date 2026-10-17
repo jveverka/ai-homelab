@@ -1,6 +1,6 @@
 
 ```bash
-docker build --network=host -t open-code-web -f Dockerfile .
+docker build -t open-code-web -f Dockerfile .
 
 docker run -d --name open-code-web \
   -e OPENCODE_SERVER_USERNAME_EXT="juraj" \
