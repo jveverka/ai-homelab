@@ -21,6 +21,7 @@ tmux a             # <- reattach to running session
 ```bash
 docker run -it --name ubuntu-agents --rm \
   --privileged \
+  -v /home/juraj/.claude-docker:/root/.claude \
   -v /home/juraj/Data/Projects/private-dc/ai-homelab:/data \
   ubuntu-agents
 ```
